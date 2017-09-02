@@ -2,19 +2,19 @@
 # Based on a work at https://github.com/docker/docker.
 # ------------------------------------------------------------------------------
 # Pull base image.
-FROM kdelfour/supervisor-docker
-MAINTAINER Kevin Delfour <kevin@delfour.eu>
+FROM ubuntu:16.04
+MAINTAINER Dengqi <dengqi935@gmail.com>
 
 # ------------------------------------------------------------------------------
 # Install base
-RUN apt-get update
-RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs
-
+# RUN apk update
+# RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs
 # ------------------------------------------------------------------------------
 # Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
-    
+# RUN curl -sL https://deb.nodesource.com/setup | bash -
+# RUN apt-get install -y nodejs
+RUN apk update 
+RUN apk  add  --no-cache --update g++ curl apache2-utils git libxml2-dev sshfs go rust nodejs nodejs-npm  cmake
 # ------------------------------------------------------------------------------
 # Install Cloud9
 RUN git clone https://github.com/c9/core.git /cloud9
